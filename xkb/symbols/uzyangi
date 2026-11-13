@@ -1,0 +1,25 @@
+// Yangi o'zbek alifbosi harflari (Ş Ç Ö Ğ) — Linux klaviatura terilmasi
+// Oddiy inglizcha (US) klaviatura + o'ng Alt (AltGr) bilan yangi harflar:
+//   AltGr + s  -> ş     AltGr + Shift + s -> Ş
+//   AltGr + c  -> ç     AltGr + Shift + c -> Ç
+//   AltGr + o  -> ö     AltGr + Shift + o -> Ö
+//   AltGr + g  -> ğ     AltGr + Shift + g -> Ğ
+//   AltGr + `  -> ʼ  (tutuq belgisi)
+// Caps Lock yoqilgan bo'lsa, AltGr + s darhol Ş beradi.
+//
+// Loyiha: https://github.com/nazmiddin255/yangi-uzbek-harflari-linux
+// Litsenziya: MIT
+
+default partial alphanumeric_keys modifier_keys
+xkb_symbols "basic" {
+    include "us(basic)"
+    name[Group1] = "O'zbek (yangi alifbo)";
+
+    key <AC02> { type[Group1] = "FOUR_LEVEL_ALPHABETIC", [ s, S, scedilla,   Scedilla   ] };
+    key <AB03> { type[Group1] = "FOUR_LEVEL_ALPHABETIC", [ c, C, ccedilla,   Ccedilla   ] };
+    key <AD09> { type[Group1] = "FOUR_LEVEL_ALPHABETIC", [ o, O, odiaeresis, Odiaeresis ] };
+    key <AC05> { type[Group1] = "FOUR_LEVEL_ALPHABETIC", [ g, G, gbreve,     Gbreve     ] };
+    key <TLDE> { [ grave, asciitilde, U02BC, U02BC ] };
+
+    include "level3(ralt_switch)"
+};

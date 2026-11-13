@@ -1,0 +1,9 @@
+#!/bin/sh
+# O'chirishdan oldin klaviaturani ro'yxatdan olib tashlaydi.
+set -e
+case "$1" in
+    remove|purge)
+        /usr/share/yangi-uzbek-harflari/xkb-register.sh remove || true
+        ;;
+esac
+exit 0

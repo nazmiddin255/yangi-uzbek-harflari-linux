@@ -1,0 +1,12 @@
+Package: yangi-uzbek-harflari
+Version: @VERSION@
+Section: x11
+Priority: optional
+Architecture: all
+Depends: xkb-data
+Maintainer: nazmiddin255 <https://github.com/nazmiddin255>
+Homepage: https://github.com/nazmiddin255/yangi-uzbek-harflari-linux
+Description: Yangi o'zbek alifbosi harflari (Ş Ç Ö Ğ) uchun klaviatura
+ Oddiy inglizcha klaviatura + o'ng Alt (AltGr) bilan yangi harflar:
+ AltGr+S = ş, AltGr+C = ç, AltGr+O = ö, AltGr+G = ğ, AltGr+` = ʼ.
+ Fonda hech qanday dastur ishlamaydi. Rasmiy paket chiqquncha vaqtinchalik yechim.

@@ -1,0 +1,10 @@
+#!/bin/sh
+# O'rnatilgandan keyin, va tizim yangilanishi klaviaturalar ro'yxatini
+# qayta yozganda ("triggered"), bizning klaviaturani ro'yxatga qo'shadi.
+set -e
+case "$1" in
+    configure|triggered)
+        /usr/share/yangi-uzbek-harflari/xkb-register.sh add || true
+        ;;
+esac
+exit 0
