@@ -1,0 +1,62 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Kerakli dasturlarni o'rnatish
+        run: sudo apt-get update && sudo apt-get install -y libxkbcommon-tools
+
+      - name: Klaviatura faylini tekshirish
+        run: xkbcli compile-keymap --include ./xkb --include-defaults --layout uzyangi > /dev/null
+
+      - name: Versiyani aniqlash
+        run: |
+          if [ "${GITHUB_REF_TYPE}" = "tag" ]; then
+            echo "VERSION=${GITHUB_REF_NAME#v}" >> "$GITHUB_ENV"
+          else
+            echo "VERSION=0.0.0~dev" >> "$GITHUB_ENV"
+          fi
+
+      - name: .deb paketini yig'ish
+        run: sh scripts/build-deb.sh "$VERSION"
+
+      - name: .tar.gz arxivini yig'ish (boshqa Linux'lar uchun)
+        run: |
+          NAME="yangi-uzbek-harflari-linux-$VERSION"
+          mkdir -p "build/$NAME"
+          cp -r install.sh uninstall.sh xkb scripts LICENSE README.md "build/$NAME/"
+          tar -C build -czf "build/$NAME.tar.gz" "$NAME"
+
+      - name: "Sinov - .deb ni o'rnatib ko'rish"
+        run: |
+          sudo dpkg -i build/*.deb
+          xkbcli list | grep -q uzyangi
+          xkbcli compile-keymap --layout uzyangi > /dev/null
+          sudo dpkg -r yangi-uzbek-harflari
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paketlar
+          path: |
+            build/*.deb
+            build/*.tar.gz
+
+      - name: Release chiqarish
+        if: github.ref_type == 'tag'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            build/*.deb
+            build/*.tar.gz
