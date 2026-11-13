@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Yangi o'zbek harflari
+Name[uz]=Yangi o'zbek harflari
+Comment=O'zbek — yangi alifbo (Ş Ç Ö Ğ) klaviaturasini yoqish
+Exec=yangi-uzbek-harflari-yoqish
+Icon=yangi-uzbek-harflari
+Terminal=false
+Categories=Utility;
+Keywords=uzbek;ozbek;klaviatura;keyboard;alifbo;

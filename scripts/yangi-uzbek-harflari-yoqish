@@ -1,0 +1,67 @@
+#!/bin/sh
+# "O'zbek — yangi alifbo" klaviaturasini joriy foydalanuvchi uchun yoqadi.
+# Ilovalar menyusidagi "Yangi o'zbek harflari" ikonkasi shu skriptni ishga tushiradi.
+# Boshqa klaviaturalarga tegmaydi, faqat bizninkini ro'yxat oxiriga qo'shadi.
+
+LAYOUT="uzyangi"
+TITLE="Yangi o'zbek harflari"
+
+xabar() {
+    # $1 = sarlavha, $2 = matn
+    if command -v notify-send >/dev/null 2>&1; then
+        notify-send -i yangi-uzbek-harflari "$1" "$2" && return
+    fi
+    if command -v zenity >/dev/null 2>&1; then
+        zenity --info --title="$1" --text="$2" 2>/dev/null && return
+    fi
+    if command -v kdialog >/dev/null 2>&1; then
+        kdialog --title "$1" --msgbox "$2" && return
+    fi
+    echo "$1: $2"
+}
+
+DE="$(echo "${XDG_CURRENT_DESKTOP:-}" | tr '[:upper:]' '[:lower:]')"
+
+# --- KDE Plasma ---
+if echo "$DE" | grep -q kde; then
+    KR="$(command -v kreadconfig6 || command -v kreadconfig5)"
+    KW="$(command -v kwriteconfig6 || command -v kwriteconfig5)"
+    if [ -n "$KR" ] && [ -n "$KW" ]; then
+        list="$($KR --file kxkbrc --group Layout --key LayoutList)"
+        variants="$($KR --file kxkbrc --group Layout --key VariantList)"
+        case ",$list," in
+            *",$LAYOUT,"*)
+                xabar "$TITLE" "Klaviatura allaqachon yoqilgan. Almashish: Meta + Alt + K"
+                exit 0 ;;
+        esac
+        [ -z "$list" ] && { list="us"; variants=""; }
+        $KW --file kxkbrc --group Layout --key LayoutList "$list,$LAYOUT"
+        $KW --file kxkbrc --group Layout --key VariantList "$variants,"
+        $KW --file kxkbrc --group Layout --key Use --type bool true
+        xabar "$TITLE" "Qo'shildi! Tizimdan chiqib qayta kiring. Keyin: AltGr + S = ş"
+        exit 0
+    fi
+fi
+
+# --- GNOME, Ubuntu, Budgie va boshqalar (gsettings) ---
+if command -v gsettings >/dev/null 2>&1 && \
+   gsettings list-keys org.gnome.desktop.input-sources >/dev/null 2>&1; then
+    cur="$(gsettings get org.gnome.desktop.input-sources sources)"
+    case "$cur" in
+        *"'$LAYOUT'"*)
+            xabar "$TITLE" "Klaviatura allaqachon yoqilgan. Almashish: Super + Space, keyin AltGr + S = ş"
+            exit 0 ;;
+    esac
+    case "$cur" in
+        *"[]"*) new="[('xkb', 'us'), ('xkb', '$LAYOUT')]" ;;
+        *)      new="${cur%]}, ('xkb', '$LAYOUT')]" ;;
+    esac
+    if gsettings set org.gnome.desktop.input-sources sources "$new"; then
+        xabar "$TITLE" "Tayyor! Super + Space bilan \"O'zbek — yangi alifbo\" ga o'ting. Keyin: AltGr + S = ş"
+        exit 0
+    fi
+fi
+
+# --- Qolganlari ---
+xabar "$TITLE" "Avtomatik yoqib bo'lmadi. Sozlamalar → Klaviatura bo'limidan \"O'zbek — yangi alifbo (Ş Ç Ö Ğ)\" ni qo'lda qo'shing."
+exit 1

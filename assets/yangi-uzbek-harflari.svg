@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0099B5"/>
+      <stop offset="1" stop-color="#1EB53A"/>
+    </linearGradient>
+    <linearGradient id="key" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#E8EEF2"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="240" height="240" rx="52" fill="url(#bg)"/>
+  <!-- tugma soyasi -->
+  <rect x="50" y="58" width="156" height="150" rx="28" fill="#000" opacity="0.18"/>
+  <!-- tugma -->
+  <rect x="50" y="46" width="156" height="150" rx="28" fill="url(#key)"/>
+  <text x="128" y="160" text-anchor="middle" font-family="DejaVu Sans, Noto Sans, Arial, sans-serif"
+        font-size="118" font-weight="700" fill="#0B5E6E">Ş</text>
+  <text x="128" y="230" text-anchor="middle" font-family="DejaVu Sans, Noto Sans, Arial, sans-serif"
+        font-size="26" font-weight="700" fill="#FFFFFF" letter-spacing="6">ÇÖĞ</text>
+</svg>

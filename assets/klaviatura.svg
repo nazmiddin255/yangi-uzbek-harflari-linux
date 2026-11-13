@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="190" viewBox="0 0 760 190">
+  <style>
+    .k { fill:#ffffff; stroke:#c9d3da; stroke-width:2 }
+    .s { fill:#000; opacity:.12 }
+    .alt { fill:#0B5E6E }
+    .t { font-family:"DejaVu Sans","Noto Sans",Arial,sans-serif; font-weight:700 }
+  </style>
+  <rect width="760" height="190" rx="20" fill="#F3F7F9"/>
+  <!-- AltGr -->
+  <rect class="s" x="30" y="56" width="150" height="90" rx="14"/>
+  <rect class="alt" x="30" y="48" width="150" height="90" rx="14"/>
+  <text class="t" x="105" y="103" text-anchor="middle" font-size="30" fill="#fff">AltGr</text>
+  <text class="t" x="105" y="170" text-anchor="middle" font-size="15" fill="#5b6b75">öng Alt</text>
+  <text class="t" x="215" y="106" text-anchor="middle" font-size="40" fill="#5b6b75">+</text>
+  <!-- harflar -->
+  <g class="t">
+    <rect class="s" x="250" y="56" width="110" height="90" rx="14"/><rect class="k" x="250" y="48" width="110" height="90" rx="14"/>
+    <text x="280" y="88" font-size="26" fill="#5b6b75">S</text><text x="330" y="122" text-anchor="middle" font-size="44" fill="#0099B5">ş</text>
+
+    <rect class="s" x="378" y="56" width="110" height="90" rx="14"/><rect class="k" x="378" y="48" width="110" height="90" rx="14"/>
+    <text x="408" y="88" font-size="26" fill="#5b6b75">C</text><text x="458" y="122" text-anchor="middle" font-size="44" fill="#0099B5">ç</text>
+
+    <rect class="s" x="506" y="56" width="110" height="90" rx="14"/><rect class="k" x="506" y="48" width="110" height="90" rx="14"/>
+    <text x="536" y="88" font-size="26" fill="#5b6b75">O</text><text x="586" y="122" text-anchor="middle" font-size="44" fill="#0099B5">ö</text>
+
+    <rect class="s" x="634" y="56" width="110" height="90" rx="14"/><rect class="k" x="634" y="48" width="110" height="90" rx="14"/>
+    <text x="664" y="88" font-size="26" fill="#5b6b75">G</text><text x="714" y="122" text-anchor="middle" font-size="44" fill="#0099B5">ğ</text>
+  </g>
+</svg>

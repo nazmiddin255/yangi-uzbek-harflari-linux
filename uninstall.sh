@@ -11,4 +11,7 @@ if [ -x /usr/share/yangi-uzbek-harflari/xkb-register.sh ]; then
 fi
 rm -f /usr/share/X11/xkb/symbols/uzyangi
 rm -rf /usr/share/yangi-uzbek-harflari
+rm -f /usr/local/bin/yangi-uzbek-harflari-yoqish \
+      /usr/local/share/applications/yangi-uzbek-harflari.desktop \
+      /usr/local/share/icons/hicolor/scalable/apps/yangi-uzbek-harflari.svg
 echo "O'chirildi. Tizimdan chiqib qayta kiring."

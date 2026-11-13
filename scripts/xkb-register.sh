@@ -27,7 +27,7 @@ add_xml() {
             print "      <configItem>"
             print "        <name>uzyangi</name>"
             print "        <shortDescription>uz</shortDescription>"
-            print "        <description>O&apos;zbek (yangi alifbo)</description>"
+            print "        <description>O&apos;zbek — yangi alifbo (Ş Ç Ö Ğ)</description>"
             print "        <languageList><iso639Id>uzb</iso639Id></languageList>"
             print "      </configItem>"
             print "    </layout>"
@@ -53,7 +53,7 @@ add_lst() {
     f="$1"
     grep -q "^  uzyangi " "$f" && return 0
     tmp="$(mktemp)"
-    awk '{ print } /^! layout/ && !done { print "  uzyangi         O'"'"'zbek (yangi alifbo)"; done=1 }' "$f" > "$tmp"
+    awk '{ print } /^! layout/ && !done { print "  uzyangi         O'"'"'zbek — yangi alifbo (Ş Ç Ö Ğ)"; done=1 }' "$f" > "$tmp"
     cat "$tmp" > "$f"
     rm -f "$tmp"
 }
@@ -69,8 +69,9 @@ remove_lst() {
 
 case "$1" in
     add)
-        for f in $(files xml); do add_xml "$f"; done
-        for f in $(files lst); do add_lst "$f"; done
+        # Avval eski yozuvni olib tashlaymiz (yangilanishda nom yangilanishi uchun)
+        for f in $(files xml); do remove_xml "$f"; add_xml "$f"; done
+        for f in $(files lst); do remove_lst "$f"; add_lst "$f"; done
         ;;
     remove)
         for f in $(files xml); do remove_xml "$f"; done

@@ -20,11 +20,14 @@ install -m 644 xkb/symbols/uzyangi "$XKB/symbols/uzyangi"
 install -d /usr/share/yangi-uzbek-harflari
 install -m 755 scripts/xkb-register.sh /usr/share/yangi-uzbek-harflari/xkb-register.sh
 /usr/share/yangi-uzbek-harflari/xkb-register.sh add
+install -m 755 scripts/yangi-uzbek-harflari-yoqish /usr/local/bin/yangi-uzbek-harflari-yoqish
+install -d /usr/local/share/applications /usr/local/share/icons/hicolor/scalable/apps
+install -m 644 desktop/yangi-uzbek-harflari.desktop /usr/local/share/applications/
+install -m 644 assets/yangi-uzbek-harflari.svg /usr/local/share/icons/hicolor/scalable/apps/
 
 echo ""
 echo "Tayyor! Endi tizimdan chiqib qayta kiring (log out / log in),"
-echo "keyin Sozlamalar -> Klaviatura -> Kiritish manbasi qo'shish ->"
-echo "O'zbek -> \"O'zbek (yangi alifbo)\" ni tanlang."
+echo "keyin ilovalar menyusidan \"Yangi o'zbek harflari\" ikonkasini bosing."
 echo ""
 echo "Eslatma: tizim yangilanishidan keyin klaviatura ro'yxatdan yo'qolsa,"
 echo "shu skriptni qaytadan ishga tushiring."
