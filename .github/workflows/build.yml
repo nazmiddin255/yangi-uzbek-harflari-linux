@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Kerakli dasturlarni o'rnatish
-        run: sudo apt-get update && sudo apt-get install -y libxkbcommon-tools
+        run: sudo apt-get update && sudo apt-get install -y libxkbcommon-tools desktop-file-utils
 
       - name: Klaviatura faylini tekshirish
         run: xkbcli compile-keymap --include ./xkb --include-defaults --layout uzyangi > /dev/null
@@ -34,9 +34,9 @@ jobs:
 
       - name: .tar.gz arxivini yig'ish (boshqa Linux'lar uchun)
         run: |
-          NAME="yangi-uzbek-harflari-linux-$VERSION"
+          NAME="yangi-uzbek-harflari-linux"
           mkdir -p "build/$NAME"
-          cp -r install.sh uninstall.sh xkb scripts LICENSE README.md "build/$NAME/"
+          cp -r install.sh uninstall.sh xkb scripts desktop assets LICENSE README.md "build/$NAME/"
           tar -C build -czf "build/$NAME.tar.gz" "$NAME"
 
       - name: "Sinov - .deb ni o'rnatib ko'rish"
@@ -44,6 +44,8 @@ jobs:
           sudo dpkg -i build/*.deb
           xkbcli list | grep -q uzyangi
           xkbcli compile-keymap --layout uzyangi > /dev/null
+          test -x /usr/bin/yangi-uzbek-harflari-yoqish
+          desktop-file-validate /usr/share/applications/yangi-uzbek-harflari.desktop
           sudo dpkg -r yangi-uzbek-harflari
 
       - uses: actions/upload-artifact@v4
