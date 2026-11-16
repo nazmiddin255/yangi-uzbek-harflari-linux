@@ -9,6 +9,7 @@
 [![Release](https://img.shields.io/github/v/release/nazmiddin255/yangi-uzbek-harflari-linux?label=versiya&color=0099B5)](https://github.com/nazmiddin255/yangi-uzbek-harflari-linux/releases/latest)
 [![Build](https://img.shields.io/github/actions/workflow/status/nazmiddin255/yangi-uzbek-harflari-linux/build.yml?label=build)](https://github.com/nazmiddin255/yangi-uzbek-harflari-linux/actions)
 [![License: MIT](https://img.shields.io/badge/litsenziya-MIT-1EB53A)](LICENSE)
+[![AI yordamida yaratilgan](https://img.shields.io/badge/AI%20yordamida-yaratilgan-8A2BE2)](#-qanday-yaratilgan)
 [![Downloads](https://img.shields.io/github/downloads/nazmiddin255/yangi-uzbek-harflari-linux/total?label=yuklangan&color=0B5E6E)](https://github.com/nazmiddin255/yangi-uzbek-harflari-linux/releases)
 
 <br>
@@ -117,6 +118,22 @@ Xohlagança özgartiring va öz versiyangizni yasang:
 ```sh
 sh scripts/build-deb.sh 1.0.1   # build/yangi-uzbek-harflari.deb yasaydi
 ```
+
+## 🤖 Qanday yaratilgan
+
+Bu loyiha **AI (sun'iy intellekt) yordamida** yaratilgan. Loyiha kiçik bölgani uçun kodning katta qismini yoziş AI ga topşirildi, bu vaqtni tejaydi. Ammo loyiha qanday işlaşi, qaysi texnologiya nima uçun tanlangani va qanday tekşirilişi meniñ nazoratimda bölgan.
+
+Men nima qildim:
+- loyiha maqsadi va talablarini belgiladim;
+- texnologiyalarni tanladim (pastda nima uçun ekani yozilgan);
+- kodni ökib çiqdim, real kompyuterda sinab kördim;
+- topilgan xatolarni aniqlab, töğrilatdim va yakuniy variantni tasdiqladim.
+
+**Texnik tuzilişi:**
+- Klaviatura — XKB tizimining bitta `symbols` fayli (`xkb/symbols/uzyangi`): standart US tartibi ustiga AltGr (3- va 4-sath) da ş ç ö ğ qöşilgan. Fonda heç qanday dastur işlamaydi.
+- `scripts/xkb-register.sh` tartibni XKB ning `evdev` va `base` röyxatlariga qöşadi, şunda u GNOME/KDE sozlamalarida körinadi.
+- `.deb` paket: `packaging/DEBIAN` dagi `postinst`/`prerm` skriptlari örnatiş va öçirişda röyxatni yangilaydi, `triggers` esa `xkb-data` yangilanganda tartibni qayta qöşadi.
+- GitHub Actions (`.github/workflows/build.yml`) har bir reliz uçun `.deb` va `.tar.gz` ni avtomatik yiğadi.
 
 ## 📄 Litsenziya
 
