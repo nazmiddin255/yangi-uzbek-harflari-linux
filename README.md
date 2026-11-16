@@ -10,6 +10,7 @@
 [![Build](https://img.shields.io/github/actions/workflow/status/nazmiddin255/yangi-uzbek-harflari-linux/build.yml?label=build)](https://github.com/nazmiddin255/yangi-uzbek-harflari-linux/actions)
 [![License: MIT](https://img.shields.io/badge/litsenziya-MIT-1EB53A)](LICENSE)
 [![AI yordamida yaratilgan](https://img.shields.io/badge/AI%20yordamida-yaratilgan-8A2BE2)](#-qanday-yaratilgan)
+[![Dasturçi tomonidan tekşirilgan](https://img.shields.io/badge/dastur%C3%A7i-tek%C5%9Firgan-2EA44F)](#-qanday-yaratilgan)
 [![Downloads](https://img.shields.io/github/downloads/nazmiddin255/yangi-uzbek-harflari-linux/total?label=yuklangan&color=0B5E6E)](https://github.com/nazmiddin255/yangi-uzbek-harflari-linux/releases)
 
 <br>
@@ -122,6 +123,8 @@ sh scripts/build-deb.sh 1.0.1   # build/yangi-uzbek-harflari.deb yasaydi
 ## 🤖 Qanday yaratilgan
 
 Bu loyiha **AI (sun'iy intellekt) yordamida** yaratilgan. Loyiha kiçik bölgani uçun kodning katta qismini yoziş AI ga topşirildi, bu vaqtni tejaydi. Ammo loyiha qanday işlaşi, qaysi texnologiya nima uçun tanlangani va qanday tekşirilişi meniñ nazoratimda bölgan.
+
+✅ **Barça kod dasturçi (loyiha muallifi) tomonidan tekşirilgan va real kompyuterda sinovdan ötkazilgan.**
 
 Men nima qildim:
 - loyiha maqsadi va talablarini belgiladim;
